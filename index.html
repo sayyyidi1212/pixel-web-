@@ -23,13 +23,25 @@
                 <li><a href="#leaderboard">Leaderboard</a></li>
             </ul>
 
+            <!-- User Profile -->
+            <div id="userProfile" class="user-profile" style="display: none;">
+                <img src="avatar.png" alt="Avatar" class="avatar">
+                <span id="userName">User</span>
+                <div id="profileDropdown" class="profile-dropdown">
+                    <a href="#settings">Settings ⚙️</a>
+                    <a href="#" id="logoutBtn">Logout 🔓</a>
+                </div>
+            </div>
+
             <div class="hamburger" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </div>
+
     </nav>
+
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -128,18 +140,18 @@
     </section>
 
     <!-- Footer -->
-<footer id="contact">
-    <div class="footer-content">
-        <div class="social-links">
-            <a href="#">📱</a>
-            <a href="#">💻</a>
-            <a href="#">🎮</a>
-            <a href="#">🌐</a>
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#">📱</a>
+                <a href="#">💻</a>
+                <a href="#">🎮</a>
+                <a href="#">🌐</a>
+            </div>
+            <p class="footer-text">© 2025 PIXEL VERSE. Dibuat dengan ❤️ untuk para seniman digital.</p>
+            <canvas id="pixelFooterCanvas" width="800" height="200"></canvas>
         </div>
-        <p class="footer-text">© 2025 PIXEL VERSE. Dibuat dengan ❤️ untuk para seniman digital.</p>
-        <canvas id="pixelFooterCanvas" width="800" height="200"></canvas>
-    </div>
-</footer>
+    </footer>
     <script src="script.js"></script>
 </body>
 

@@ -965,3 +965,45 @@ nav {
     border-radius: 8px;
     box-shadow: 0 0 20px #0ff inset;
 }
+
+/* user profile */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    position: relative; /* jangan absolute, biar ikut flow nav */
+}
+
+.user-profile .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #0ff;
+}
+
+/* Dropdown menu */
+.profile-dropdown {
+    display: none;
+    position: absolute; /* tetap absolute untuk dropdown */
+    top: 40px; /* sedikit di bawah avatar */
+    right: 0;
+    background-color: #111;
+    border: 1px solid #0ff;
+    border-radius: 6px;
+    flex-direction: column;
+    min-width: 120px;
+    z-index: 1000;
+}
+
+.profile-dropdown a {
+    padding: 8px 12px;
+    color: #0ff;
+    text-decoration: none;
+    display: block;
+}
+
+.profile-dropdown a:hover {
+    background-color: #0ff;
+    color: #111;
+}

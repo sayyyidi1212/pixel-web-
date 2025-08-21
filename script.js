@@ -147,33 +147,8 @@ window.addEventListener('load', () => {
 function toggleMenu() {
     document.querySelector(".nav-links").classList.toggle("active");
 }
-//login dummy
-const goCreateBtn = document.getElementById("goCreateBtn");
-const loginModal = document.getElementById("loginModal");
-const closeBtn = document.getElementById("closeBtn");
-const loginForm = document.getElementById("loginForm");
-const pixelForm = document.getElementById("pixelForm");
 
-// buka modal
-goCreateBtn.addEventListener("click", () => {
-    loginModal.style.display = "flex";
-});
-
-// tutup modal
-closeBtn.addEventListener("click", () => {
-    loginModal.style.display = "none";
-});
-
-// login
-loginForm.addEventListener("submit", (e) => {
-    e.preventDefault(); // cegah refresh
-    loginModal.style.display = "none";
-    pixelForm.style.display = "block"; // tampilkan pixel form
-    // jangan sembunyikan hero section!
-    window.scrollTo({ top: pixelForm.offsetTop, behavior: 'smooth' }); // auto scroll ke form
-});
 //galerry
-// ambil elemen
 const uploadForm = document.getElementById("uploadForm");
 const uploaderName = document.getElementById("uploaderName");
 const uploadImage = document.getElementById("uploadImage");
@@ -319,4 +294,62 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
 
     draw();
+});
+// Ambil elemen
+const goCreateBtn = document.getElementById("goCreateBtn");
+const loginModal = document.getElementById("loginModal");
+const closeBtn = document.getElementById("closeBtn");
+const loginForm = document.getElementById("loginForm");
+
+const pixelForm = document.getElementById("pixelForm");
+
+// User profile
+const userProfile = document.getElementById("userProfile");
+const profileDropdown = document.getElementById("profileDropdown");
+const userNameDisplay = document.getElementById("userName");
+const logoutBtn = document.getElementById("logoutBtn");
+
+// Buka modal login
+goCreateBtn.addEventListener("click", () => {
+    loginModal.style.display = "flex";
+});
+
+// Tutup modal
+closeBtn.addEventListener("click", () => {
+    loginModal.style.display = "none";
+});
+
+// Login dummy
+loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    const email = loginForm.querySelector('input[type="email"]').value;
+    
+    // Sembunyikan modal
+    loginModal.style.display = "none";
+    
+    // Tampilkan pixel form
+    pixelForm.style.display = "block";
+    
+    // Tampilkan user profile di nav
+    userProfile.style.display = "flex";
+    
+    // Set nama user
+    userNameDisplay.textContent = email.split("@")[0]; // contoh ambil username dari email
+    
+    // Scroll ke form
+    window.scrollTo({ top: pixelForm.offsetTop, behavior: 'smooth' });
+});
+
+// Toggle dropdown
+userProfile.addEventListener("click", () => {
+    profileDropdown.style.display = profileDropdown.style.display === "flex" ? "none" : "flex";
+});
+
+// Logout
+logoutBtn.addEventListener("click", () => {
+    userProfile.style.display = "none"; // sembunyikan profile
+    pixelForm.style.display = "none";   // sembunyikan pixel form
+    profileDropdown.style.display = "none"; // sembunyikan dropdown
+    alert("Anda telah logout!");
 });
