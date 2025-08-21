@@ -1,407 +1,17 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PIXEL VERSE - Digital Art Studio</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Orbitron', monospace;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-            color: #ffffff;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-        
-        /* Animated pixel background */
-        .pixel-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.3;
-        }
-        
-        .pixel {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #00ffff;
-            animation: pixelFloat 6s infinite ease-in-out;
-        }
-        
-        @keyframes pixelFloat {
-            0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
-            50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
-        }
-        
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1rem 2rem;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 2px solid #00ffff;
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: #00ffff;
-            text-shadow: 0 0 20px #00ffff;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes glow {
-            from { text-shadow: 0 0 20px #00ffff; }
-            to { text-shadow: 0 0 30px #00ffff, 0 0 40px #00ffff; }
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-links a:hover {
-            color: #ff00ff;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #00ffff, #ff00ff);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            padding: 2rem;
-            animation: fadeInUp 1s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 3s ease-in-out infinite;
-        }
-        
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            font-family: 'Share Tech Mono', monospace;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: linear-gradient(45deg, #00ffff, #ff00ff);
-            color: #000;
-            text-decoration: none;
-            border-radius: 0;
-            font-weight: 700;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: none;
-            cursor: pointer;
-            font-family: 'Orbitron', monospace;
-        }
-        
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
-        }
-        
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .cta-button:hover::before {
-            left: 100%;
-        }
-        
-        /* Features Section */
-        .features {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            color: #00ffff;
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, #00ffff, #ff00ff);
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: #00ffff;
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
-        }
-        
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #ff00ff;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #ffffff;
-        }
-        
-        .feature-card p {
-            color: rgba(255, 255, 255, 0.8);
-            font-family: 'Share Tech Mono', monospace;
-        }
-        
-        /* Gallery Section */
-        .gallery {
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(255, 0, 255, 0.05));
-        }
-        
-        .gallery-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-        
-        .gallery-item {
-            aspect-ratio: 1;
-            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ff00);
-            background-size: 400% 400%;
-            animation: gradientMove 8s ease-in-out infinite;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        @keyframes gradientMove {
-            0%, 100% { background-position: 0% 50%; }
-            25% { background-position: 100% 0%; }
-            50% { background-position: 100% 100%; }
-            75% { background-position: 0% 100%; }
-        }
-        
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
-        }
-        
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50%;
-            height: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-        }
-        
-        /* Footer */
-        footer {
-            padding: 3rem 2rem;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.8);
-            border-top: 2px solid #00ffff;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .social-links a {
-            color: #ffffff;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            color: #00ffff;
-            transform: scale(1.2);
-        }
-        
-        .footer-text {
-            color: rgba(255, 255, 255, 0.7);
-            font-family: 'Share Tech Mono', monospace;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #00ffff, #ff00ff);
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #ff00ff, #00ffff);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Animated pixel background -->
     <div class="pixel-bg" id="pixelBg"></div>
-    
+
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
@@ -412,18 +22,24 @@
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
-    
+
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>PIXEL VERSE</h1>
-            <p>Masuki dunia digital art yang menakjubkan dengan teknologi pixel terdepan. Ciptakan, eksplorasi, dan wujudkan imajinasi Anda dalam bentuk pixel art yang memukau.</p>
-            <a href="#features" class="cta-button">Mulai Berkreasi</a>
+            <h1>MY PIXEL</h1>
+            <p>Masuki dunia digital art yang menakjubkan dengan teknologi pixel terdepan. Ciptakan, eksplorasi, dan
+                wujudkan imajinasi Anda dalam bentuk pixel art yang memukau.</p>
+            <a href="#features" class="cta-button"></a>
         </div>
     </section>
-    
+
     <!-- Features Section -->
     <section class="features" id="features">
         <h2 class="section-title">Fitur Unggulan</h2>
@@ -436,7 +52,8 @@
             <div class="feature-card">
                 <div class="feature-icon">⚡</div>
                 <h3>Real-time Rendering</h3>
-                <p>Teknologi rendering real-time yang memungkinkan preview instant dari setiap perubahan yang dibuat.</p>
+                <p>Teknologi rendering real-time yang memungkinkan preview instant dari setiap perubahan yang dibuat.
+                </p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🌈</div>
@@ -460,7 +77,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Gallery Section -->
     <section class="gallery" id="gallery">
         <h2 class="section-title">Galeri Karya</h2>
@@ -475,7 +92,7 @@
             <div class="gallery-item"></div>
         </div>
     </section>
-    
+
     <!-- Footer -->
     <footer id="contact">
         <div class="footer-content">
@@ -485,16 +102,17 @@
                 <a href="#">🎮</a>
                 <a href="#">🌐</a>
             </div>
-            <p class="footer-text">© 2025 PIXEL VERSE. Semua hak cipta dilindungi. Dibuat dengan ❤️ untuk para seniman digital.</p>
+            <p class="footer-text">© 2025 PIXEL VERSE. Semua hak cipta dilindungi. Dibuat dengan ❤️ untuk para seniman
+                digital.</p>
         </div>
     </footer>
-    
+
     <script>
         // Create animated pixel background
         function createPixelBackground() {
             const pixelBg = document.getElementById('pixelBg');
             const colors = ['#00ffff', '#ff00ff', '#ffff00', '#00ff00', '#ff6600'];
-            
+
             for (let i = 0; i < 100; i++) {
                 const pixel = document.createElement('div');
                 pixel.className = 'pixel';
@@ -506,7 +124,7 @@
                 pixelBg.appendChild(pixel);
             }
         }
-        
+
         // Smooth scrolling for navigation links
         function setupSmoothScrolling() {
             const links = document.querySelectorAll('a[href^="#"]');
@@ -524,7 +142,7 @@
                 });
             });
         }
-        
+
         // Intersection Observer for animations
         function setupScrollAnimations() {
             const observer = new IntersectionObserver((entries) => {
@@ -534,12 +152,12 @@
                     }
                 });
             }, { threshold: 0.1 });
-            
+
             document.querySelectorAll('.feature-card, .gallery-item').forEach(el => {
                 observer.observe(el);
             });
         }
-        
+
         // Parallax effect for hero section
         function setupParallax() {
             window.addEventListener('scroll', () => {
@@ -550,7 +168,7 @@
                 }
             });
         }
-        
+
         // Interactive gallery items
         function setupGalleryInteraction() {
             const galleryItems = document.querySelectorAll('.gallery-item');
@@ -565,17 +183,17 @@
                         item.style.transform = 'scale(1)';
                     }, 300);
                 });
-                
+
                 // Stagger animation delays
                 item.style.animationDelay = `${index * 0.1}s`;
             });
         }
-        
+
         // Cursor trail effect
         function setupCursorTrail() {
             let mouseMoved = false;
             const trail = [];
-            
+
             document.addEventListener('mousemove', (e) => {
                 if (!mouseMoved) {
                     mouseMoved = true;
@@ -586,7 +204,7 @@
                         }
                     }, 100);
                 }
-                
+
                 const dot = document.createElement('div');
                 dot.style.position = 'fixed';
                 dot.style.left = e.clientX + 'px';
@@ -598,12 +216,12 @@
                 dot.style.pointerEvents = 'none';
                 dot.style.zIndex = '9999';
                 dot.style.animation = 'fadeOut 1s ease-out forwards';
-                
+
                 document.body.appendChild(dot);
                 trail.push(dot);
             });
         }
-        
+
         // Add fadeOut animation for cursor trail
         const style = document.createElement('style');
         style.textContent = `
@@ -615,7 +233,7 @@
             }
         `;
         document.head.appendChild(style);
-        
+
         // Initialize all features
         document.addEventListener('DOMContentLoaded', () => {
             createPixelBackground();
@@ -625,7 +243,7 @@
             setupGalleryInteraction();
             setupCursorTrail();
         });
-        
+
         // Loading animation
         window.addEventListener('load', () => {
             document.body.style.opacity = '0';
@@ -634,6 +252,12 @@
                 document.body.style.opacity = '1';
             }, 100);
         });
+
+        //nav
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("active");
+        }
     </script>
 </body>
+
 </html>
