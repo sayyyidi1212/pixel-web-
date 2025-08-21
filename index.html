@@ -34,10 +34,32 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>MY PIXEL</h1>
-            <p>Masuki dunia digital art yang menakjubkan dengan teknologi pixel terdepan. Ciptakan, eksplorasi, dan
-                wujudkan imajinasi Anda dalam bentuk pixel art yang memukau.</p>
-            <a href="#features" class="cta-button"></a>
+            <p>Masuki dunia digital art yang menakjubkan dengan teknologi pixel terdepan.</p>
+            <a class="cta-button" id="goCreateBtn">Go Create</a>
         </div>
+    </section>
+
+    <!-- Modal Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeBtn">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label>Email:</label><br>
+                <input type="email" required><br><br>
+                <label>Password:</label><br>
+                <input type="password" required><br><br>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Pixel Form -->
+    <section id="pixelForm">
+        <h2>Buat Pixel Art</h2>
+        <p>Upload gambar Anda untuk diubah menjadi pixel art.</p>
+        <input type="file" accept="image/*">
+        <button>Convert to Pixel</button>
     </section>
 
     <!-- Features Section -->
@@ -257,6 +279,32 @@
         function toggleMenu() {
             document.querySelector(".nav-links").classList.toggle("active");
         }
+        //login dummy
+        const goCreateBtn = document.getElementById("goCreateBtn");
+        const loginModal = document.getElementById("loginModal");
+        const closeBtn = document.getElementById("closeBtn");
+        const loginForm = document.getElementById("loginForm");
+        const pixelForm = document.getElementById("pixelForm");
+
+        // buka modal
+        goCreateBtn.addEventListener("click", () => {
+            loginModal.style.display = "flex";
+        });
+
+        // tutup modal
+        closeBtn.addEventListener("click", () => {
+            loginModal.style.display = "none";
+        });
+
+        // login
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault(); // cegah refresh
+            loginModal.style.display = "none";
+            pixelForm.style.display = "block"; // tampilkan pixel form
+            // jangan sembunyikan hero section!
+            window.scrollTo({ top: pixelForm.offsetTop, behavior: 'smooth' }); // auto scroll ke form
+        });
+
     </script>
 </body>
 
