@@ -950,5 +950,18 @@ nav {
 
 #leaderboardList li:nth-child(3) {
     border-left: 6px solid #cd7f32;
-    /* perunggu */
+}
+
+/* Footer Pixel Animation */
+/* Footer Pixel Animation */
+#pixelFooterCanvas {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    height: 150px; /* tinggi footer */
+    margin: 20px auto;
+    background-color: #111; /* background gelap */
+    border: 2px solid #0ff; /* garis neon */
+    border-radius: 8px;
+    box-shadow: 0 0 20px #0ff inset;
 }

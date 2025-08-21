@@ -281,3 +281,42 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+// Buat animasi pixel di footer
+document.addEventListener('DOMContentLoaded', ()=>{
+    const canvas = document.getElementById('pixelFooterCanvas');
+    const ctx = canvas.getContext('2d');
+    const width = canvas.width;
+    const height = canvas.height;
+
+    const colors = ['#00ffff','#ff00ff','#ffff00','#ff6600','#07bdbd'];
+    const pixels = [];
+
+    // buat 50 pixel neon
+    for(let i=0;i<50;i++){
+        pixels.push({
+            x: Math.random()*width,
+            y: Math.random()*height,
+            size: Math.random()*6 + 2,
+            speed: Math.random()*1.5 + 0.5,
+            color: colors[Math.floor(Math.random()*colors.length)],
+            direction: Math.random()>0.5?1:-1
+        });
+    }
+
+    function draw() {
+        ctx.fillStyle = '#111';
+        ctx.fillRect(0,0,width,height);
+
+        pixels.forEach(p=>{
+            ctx.fillStyle = p.color;
+            ctx.fillRect(p.x,p.y,p.size,p.size);
+            p.y += p.speed * p.direction;
+            if(p.y > height) p.y = 0;
+            if(p.y < 0) p.y = height;
+        });
+
+        requestAnimationFrame(draw);
+    }
+
+    draw();
+});
