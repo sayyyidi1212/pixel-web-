@@ -296,67 +296,221 @@ nav {
 }
 
 /* Gallery Section */
-.gallery {
+/* Upload Section */
+.upload-section {
+    text-align: center;
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 600px;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    border-radius: 16px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    color: white;
     padding: 5rem 2rem;
-    background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(255, 0, 255, 0.05));
+    max-width: 1200px;
+    margin: 0 auto;
+
+
+}
+
+.upload-section h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.upload-section input,
+.upload-section button {
+    margin: 8px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+    outline: none;
+}
+
+.upload-section input[type="text"],
+.upload-section input[type="file"] {
+    background: white;
+    color: #333;
+    width: 45%;
+    cursor: pointer;
+}
+
+.upload-section button {
+    background: #ff7eb3;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.upload-section button:hover {
+    background: #ff5277;
+    transform: scale(1.05);
+}
+
+/* Gallery Section */
+.gallery {
+    margin: 60px auto;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive, monospace;
+    /* Font retro pixel */
+}
+
+.gallery .section-title {
+    font-size: 22px;
+    margin-bottom: 30px;
+    color: #222;
+    text-shadow: 2px 2px #ff00ff;
+    /* efek pixel glow */
+    letter-spacing: 2px;
 }
 
 .gallery-grid {
-    max-width: 1200px;
-    margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    padding: 0 20px;
 }
 
 .gallery-item {
-    aspect-ratio: 1;
-    background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ff00);
-    background-size: 400% 400%;
-    animation: gradientMove 8s ease-in-out infinite;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-
-@keyframes gradientMove {
-
-    0%,
-    100% {
-        background-position: 0% 50%;
-    }
-
-    25% {
-        background-position: 100% 0%;
-    }
-
-    50% {
-        background-position: 100% 100%;
-    }
-
-    75% {
-        background-position: 0% 100%;
-    }
+    background: #fafafa;
+    border: 4px solid #000;
+    border-radius: 0;
+    /* biar lebih pixel look */
+    padding: 12px;
+    box-shadow: 6px 6px 0 #444;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .gallery-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 6px 6px 0 #ff00ff;
+    cursor: pointer;
 }
 
-.gallery-item::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    height: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.5);
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: 3px solid #000;
+    border-radius: 0;
+    /* pixel style */
+    image-rendering: pixelated;
+    /* bikin efek gambar jadi pixel */
 }
+
+/* Upload Section */
+.upload-section {
+    margin: 60px auto;
+    padding: 30px;
+    max-width: 500px;
+    text-align: center;
+    background: #fafafa;
+    border: 4px solid #000;
+    box-shadow: 8px 8px 0 #333;
+    font-family: 'Press Start 2P', cursive, monospace;
+}
+
+.upload-section h2 {
+    font-size: 18px;
+    margin-bottom: 25px;
+    color: #111;
+    text-shadow: 2px 2px #ff00ff;
+    letter-spacing: 2px;
+}
+
+.upload-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.upload-section input[type="text"],
+.upload-section input[type="file"] {
+    padding: 14px;
+    border: 3px solid #000;
+    background: #fff;
+    font-size: 12px;
+    font-family: inherit;
+    border-radius: 0;
+    /* biar pixel style */
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.upload-section input[type="text"]:focus,
+.upload-section input[type="file"]:focus {
+    border-color: #ff00ff;
+    box-shadow: 3px 3px 0 #000;
+}
+
+.upload-section button {
+    padding: 14px;
+    border: 3px solid #000;
+    background: #00ccff;
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 0;
+    box-shadow: 4px 4px 0 #333;
+    transition: all 0.2s ease;
+}
+
+.upload-section button:hover {
+    background: #ffcc00;
+    box-shadow: 4px 4px 0 #000;
+    transform: translate(-2px, -2px);
+}
+
+
+.like-btn {
+    margin-top: 10px;
+    background: #00ccff;
+    border: 3px solid #000;
+    border-radius: 0;
+    padding: 8px 12px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #000;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.like-btn:hover {
+    background: #ffcc00;
+    box-shadow: 3px 3px 0 #000;
+}
+
+
+/* Like Button */
+.like-btn {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 12px rgba(255, 118, 150, 0.4);
+}
+
+.like-btn:hover {
+    background: linear-gradient(135deg, #ff5277, #ff3c67);
+    transform: scale(1.1);
+}
+
+.like-count {
+    margin-left: 6px;
+    font-weight: bold;
+}
+
 
 /* Footer */
 footer {
@@ -630,8 +784,10 @@ nav {
     display: none;
     padding: 40px;
     text-align: center;
-    background: rgba(34, 34, 34, 0.8); /* semi transparan */
-    backdrop-filter: blur(10px); /* efek kaca */
+    background: rgba(34, 34, 34, 0.8);
+    /* semi transparan */
+    backdrop-filter: blur(10px);
+    /* efek kaca */
     color: #fff;
     border-radius: 16px;
     margin: 30px auto;
@@ -693,7 +849,40 @@ nav {
 
 /* Animasi fade in */
 @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(-20px);}
-    to {opacity: 1; transform: translateY(0);}
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
+/* tombol unduh */
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.like-btn,
+.download-btn {
+    padding: 8px 12px;
+    border: 2px solid #000;
+    background: #00ccff;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+    font-family: inherit;
+    box-shadow: 3px 3px 0 #333;
+    transition: 0.2s;
+}
+
+.like-btn:hover,
+.download-btn:hover {
+    background: #ffcc00;
+    transform: translate(-2px, -2px);
 }
