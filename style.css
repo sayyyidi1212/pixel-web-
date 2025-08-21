@@ -886,3 +886,69 @@ nav {
     background: #ffcc00;
     transform: translate(-2px, -2px);
 }
+
+/* Leaderboard */
+#leaderboard {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 30px;
+    margin: 40px auto;
+    border-radius: 16px;
+    max-width: 600px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+#leaderboard h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+#leaderboardList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#leaderboardList li {
+    background: white;
+    color: #333;
+    margin: 10px 0;
+    padding: 15px 20px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#leaderboardList li:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Tambahan ranking */
+#leaderboardList li span.rank {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#leaderboardList li:first-child {
+    border-left: 6px solid gold;
+}
+
+#leaderboardList li:nth-child(2) {
+    border-left: 6px solid silver;
+}
+
+#leaderboardList li:nth-child(3) {
+    border-left: 6px solid #cd7f32;
+    /* perunggu */
+}

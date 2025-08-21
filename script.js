@@ -205,10 +205,8 @@ uploadForm.addEventListener("submit", (e) => {
 
         // tambah ke gallery
         galleryGrid.appendChild(item);
-
         // reset form
         uploadForm.reset();
-
         // event like button
         const likeBtn = item.querySelector(".like-btn");
         const likeCount = item.querySelector(".like-count");
@@ -218,4 +216,68 @@ uploadForm.addEventListener("submit", (e) => {
         });
     };
     reader.readAsDataURL(file);
+});
+document.addEventListener("DOMContentLoaded", () => {
+    const uploadBtn = document.getElementById("uploadBtn");
+    const uploaderNameEl = document.getElementById("uploaderName");
+    const uploadImageEl = document.getElementById("uploadImage");
+    const galleryGridEl = document.getElementById("galleryGrid");
+    const leaderboardListEl = document.getElementById("leaderboardList");
+
+    const leaderboardData = {};
+
+    uploadBtn.addEventListener("click", () => {
+        const name = uploaderNameEl.value.trim();
+        const file = uploadImageEl.files[0];
+
+        if (!name || !file) return alert("Nama dan gambar wajib diisi!");
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            // buat elemen gallery
+            const item = document.createElement("div");
+            item.classList.add("gallery-item");
+
+            item.innerHTML = `
+                <img src="${e.target.result}" alt="Karya">
+                <p class="uploader-name">${name}</p>
+                <div class="btn-group">
+                    <button class="like-btn">👍 Like <span class="like-count">0</span></button>
+                    <a href="${e.target.result}" download="karya-${Date.now()}.png" class="download-btn">⬇️ Unduh</a>
+                </div>
+            `;
+
+            galleryGridEl.appendChild(item);
+
+            // reset form
+            uploaderNameEl.value = "";
+            uploadImageEl.value = "";
+
+            // add like event
+            const likeBtn = item.querySelector(".like-btn");
+            const likeCount = item.querySelector(".like-count");
+
+            if (!leaderboardData[name]) leaderboardData[name] = 0;
+
+            likeBtn.addEventListener("click", () => {
+                let count = parseInt(likeCount.textContent);
+                likeCount.textContent = count + 1;
+
+                leaderboardData[name]++;
+                updateLeaderboard();
+            });
+        };
+        reader.readAsDataURL(file);
+    });
+
+    function updateLeaderboard() {
+        const sorted = Object.entries(leaderboardData).sort((a, b) => b[1] - a[1]);
+        leaderboardListEl.innerHTML = "";
+
+        sorted.forEach(([user, points], i) => {
+            const li = document.createElement("li");
+            li.innerHTML = `<strong>#${i + 1}</strong> ${user} — ${points} poin`;
+            leaderboardListEl.appendChild(li);
+        });
+    }
 });
